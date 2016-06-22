@@ -1,6 +1,6 @@
 import test from 'ava';
 import textr from 'textr';
-import locale from './index';
+import textrLocale from './index';
 
 const lang = process.env.LANG
   .toLowerCase()
@@ -11,10 +11,10 @@ const fixture = 'Hello world!';
 
 test.cb(t => {
   textr()
-    .use(locale)
-    .use((input, {locale}) => {
+    .use(textrLocale)
+    .use((input, { locale }) => {
       t.is(locale, lang);
-      t.is(input, fixture)
+      t.is(input, fixture);
       t.end();
     })
     .exec(fixture);
